@@ -1,0 +1,19 @@
+version: '3.1'
+
+services:
+  web:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      NEXTAUTH_URL: http://web:3000
+      NEXT_PUBLIC_API_URL: http://backend:3001
+      NEXTAUTH_SECRET: ded73c86072c6b089ef18b856d699b52454b60a392953f787d7e160d93c726ad
+    volumes:
+      - .:/app
+    networks:
+      - my_network
+
+networks:
+  my_network:
+    driver: bridge
